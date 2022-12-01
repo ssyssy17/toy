@@ -30,3 +30,18 @@ dependencies {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+//sub module 별로 기초 디렉토리가 존재하지 않으면 자동 생성
+tasks {
+	subprojects.stream()
+	.flatMap { it.sourceSets.stream() }
+	.flatMap { it.java.srcDirs.stream() }
+	.filter { !it.exists() }
+	.forEash { it.mkdirs() }
+	
+	subprojects.stream()
+	.flatMap { it.sourceSets.stream() }
+	.flatMap { it.resources.srcDirs.stream() }
+	.filter { !it.exists() }
+	.forEach { it.mkdirs() }
+}
