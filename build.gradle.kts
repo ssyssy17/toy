@@ -37,7 +37,7 @@ tasks {
 	.flatMap { it.sourceSets.stream() }
 	.flatMap { it.java.srcDirs.stream() }
 	.filter { !it.exists() }
-	.forEash { it.mkdirs() }
+	.forEach { it.mkdirs() }
 	
 	subprojects.stream()
 	.flatMap { it.sourceSets.stream() }
