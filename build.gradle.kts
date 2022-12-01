@@ -45,3 +45,5 @@ tasks {
 	.filter { !it.exists() }
 	.forEach { it.mkdirs() }
 }
+
+task("ddd")
